@@ -1,6 +1,5 @@
 package io.tackle.applicationinventory.entities;
 
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.panache.common.Parameters;
 import io.tackle.commons.annotations.CheckType;
@@ -10,17 +9,7 @@ import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.PreRemove;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -38,6 +27,8 @@ public class Application extends AbstractEntity {
     public String businessService;
     @Filterable
     public String comments;
+
+    public Long analysisId;
 
     @ElementCollection
     @CollectionTable(
